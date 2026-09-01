@@ -1,89 +1,18 @@
-<!DOCTYPE html>
-<html>
-  <body style="background-color: #d8b4fe; color: #473b3b; font-weight: 500; transition: all 0.8s ease;">
-    <div>
-      <div class="desktop-icons">
-        <div class="icon" onclick="openWindow('app-notes')">
-          <span>📝</span>
-          <p>Notes</p>
-        </div>
-        <div class="icon" onclick="openWindow('app-settings')">
-          <span>⚙️</span>
-          <p>Settings</p>
-        </div>
-      </div> 
-    </div>
+# JJK Web OS — Domain Expansion Edition
 
-    <!-- Back Button (hidden by default) -->
-    <button id="back-btn" onclick="resetSystem()" style="display: none; position: fixed; bottom: 20px; right: 20px; padding: 10px 16px; background-color: #1e293b; color: white; border: 1px solid #ffffff44; border-radius: 6px; cursor: pointer; font-weight: bold; z-index: 99;">⬅ Back to Domain Select</button>
+An interactive, anime-inspired Web Operating System built with HTML, CSS, JavaScript, and the Web Speech API.
 
-    <div id="welcome-screen">
-      <h1>WELCOME TO MY OS</h1>
-      <p>System status: Online and Ready!</p>
-      <h2>Introduction </h2>
-      <p>Hello World!</p>
-      
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsMsa9VGxbry9wgm3XhWfSHv76QUrEHRufOWEr13ZEIg&s=10" alt="Welcome Image" style="border-radius: 8px;">
-      
-      <br><br>
-      <button onclick="startSystem('gojo')" style="background-color: #7c3aed; color: white; padding: 8px 12px; border: none; border-radius: 4px; cursor: pointer; margin-right: 5px;">Gojo Domain</button>
-      <button onclick="startSystem('sukuna')" style="background-color: #dc2626; color: white; padding: 8px 12px; border: none; border-radius: 4px; cursor: pointer; margin-right: 5px;">Sukuna Domain</button>
-      <button onclick="startSystem('mahito')" style="background-color: #0d9488; color: white; padding: 8px 12px; border: none; border-radius: 4px; cursor: pointer;">Mahito Domain</button>
-    </div>
+## Features
+- **3 Unique Domain Expansions:** Choose between Gojo (Unlimited Void), Sukuna (Malevolent Shrine), and Mahito (Self-Embodiment of Perfection).
+- **Voice Synthesis:** Custom browser audio chants for each Domain invocation.
+- **Dynamic HD Wallpapers:** Live background wallpaper switching for each domain environment.
+- **Desktop Search Widget:** Integrated web search bar accessible directly from the desktop.
+- **Draggable Windows:** Fully movable system windows with open/close functionality.
 
-    <script>
-      function startSystem(domain) {
-        // Hide welcome screen and show back button
-        document.getElementById('welcome-screen').style.display = 'none';
-        document.getElementById('back-btn').style.display = 'block';
+## Demo
+Try out the live web OS here: https://kingplayer-eng.github.io/Web-OS/
 
-        let speechText = "";
-
-        if (domain === 'gojo') {
-          // Gojo Void Theme
-          document.body.style.backgroundColor = '#0b0f19';
-          document.body.style.color = '#38bdf8';
-          speechText = "Domain Expansion... Unlimited Void.";
-        } else if (domain === 'sukuna') {
-          // Sukuna Shrine Theme
-          document.body.style.backgroundColor = '#450a0a';
-          document.body.style.color = '#fca5a5';
-          speechText = "Domain Expansion... Malevolent Shrine.";
-        } else if (domain === 'mahito') {
-          // Mahito Perfection Theme
-          document.body.style.backgroundColor = '#042f2e';
-          document.body.style.color = '#99f6e4';
-          speechText = "Domain Expansion... Self-Embodiment of Perfection.";
-        }
-
-        // Trigger Domain Expansion voice synthesis
-        if ('speechSynthesis' in window && speechText) {
-          window.speechSynthesis.cancel(); // Stop any active speech
-          const chant = new SpeechSynthesisUtterance(speechText);
-          chant.pitch = 0.6; // Lower tone
-          chant.rate = 0.85; // Slower dramatic speed
-          window.speechSynthesis.speak(chant);
-        }
-      }
-
-      function resetSystem() {
-        // Show welcome screen and hide back button
-        document.getElementById('welcome-screen').style.display = 'block';
-        document.getElementById('back-btn').style.display = 'none';
-
-        // Reset background and text colors to original
-        document.body.style.backgroundColor = '#d8b4fe';
-        document.body.style.color = '#473b3b';
-
-        // Stop any active domain voice
-        if ('speechSynthesis' in window) {
-          window.speechSynthesis.cancel();
-        }
-      }
-
-      function openWindow(id) {
-        alert('Opening ' + id);
-      }
-    </script>
-  </body>
-</html>
+## Built With
+- HTML5 & CSS3
+- JavaScript (DOM manipulation & Web Speech API)
+- GitHub Pages
