@@ -1,154 +1,226 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JJK WebOS</title>
   <style>
     body {
       margin: 0;
-      width: 100vw;
       height: 100vh;
-      overflow: hidden;
       background-image: url('https://images7.alphacoders.com/132/1322952.jpeg');
       background-size: cover;
       background-position: center;
-      font-family: Arial, sans-serif;
-      color: white;
-      transition: background-image 0.5s ease;
+      background-repeat: no-repeat;
+      font-family: 'Fira Code', monospace;
+      color: whitesmoke;
+      transition: background-image 0.5s ease-in-out;
     }
 
-    /* Google Search Bar */
+    /* Search Box */
     .search-box {
-      position: absolute;
-      top: 15%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      display: flex;
-      gap: 10px;
+      text-align: center;
+      margin-top: 80px;
     }
 
     .search-box input {
-      padding: 12px 20px;
+      padding: 10px;
       border-radius: 20px;
       border: none;
-      width: 280px;
-      font-size: 14px;
-      outline: none;
+      width: 270px;
     }
 
     .search-box button {
-      padding: 12px 20px;
-      border-radius: 20px;
+      padding: 10px 15px;
+      border-radius: 15px;
       border: none;
-      background: #a855f7;
+      background: #8b4166;   
       color: white;
-      font-weight: bold;
       cursor: pointer;
     }
 
-    /* Domain Launch Dock */
+    /* Bottom Dock */
     .dock {
-      position: fixed;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 10px;
-      background: rgba(0, 0, 0, 0.7);
-      padding: 12px 20px;
-      border-radius: 30px;
+      position: absolute;
+      bottom: 20px;
+      left: 35px;
+      background: black;
+      padding: 10px;
+      border-radius: 20px;
     }
 
     .dock button {
-      padding: 10px 16px;
-      border-radius: 20px;
+      padding: 8px 12px;
+      border-radius: 10px;
       border: none;
       color: white;
-      font-weight: bold;
       cursor: pointer;
+      margin: 2px;
     }
 
-    /* Back to Main Button */
+    /* Back Button */
     #back-btn {
       display: none;
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      padding: 12px 20px;
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      padding: 10px 15px;
       background: #334155;
       color: white;
       border: none;
-      border-radius: 20px;
+      border-radius: 10px;
       cursor: pointer;
+    }
+
+    /* Floating Notepad */
+    .notepad {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 220px;
+      background: rgba(0, 0, 0, 0.75);
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+
+    .notepad-header {
+      font-size: 14px;
       font-weight: bold;
+      color: #a855f7;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .notepad textarea {
+      width: 100%;
+      height: 120px;
+      background: transparent;
+      border: none;
+      color: whitesmoke;
+      font-family: 'Fira Code', monospace;
+      font-size: 12px;
+      resize: none;
+      outline: none;
+      box-sizing: border-box;
     }
   </style>
 </head>
 <body>
 
-  <!-- Search Bar -->
+  <!-- Floating Notepad -->
+  <div class="notepad">
+    <div class="notepad-header">Cursed Notes</div>
+    <textarea placeholder="Type your notes here..."></textarea>
+  </div>
+
+  <!-- Search -->
   <div class="search-box">
-    <input type="text" id="search-input" placeholder="Search Google..." onkeydown="if(event.key === 'Enter') searchGoogle()">
+    <input type="text" id="search-input" placeholder="Search Google...">
     <button onclick="searchGoogle()">Search</button>
   </div>
 
-  <!-- Domain Dock -->
+  <!-- Dock -->
   <div class="dock">
-    <button style="background: #7c3aed;" onclick="setDomain('gojo')">🌀 Gojo</button>
-    <button style="background: #dc2626;" onclick="setDomain('sukuna')">⛩️ Sukuna</button>
-    <button style="background: #0d9488;" onclick="setDomain('mahito')">🖐️ Mahito</button>
-    <button style="background: #eab308;" onclick="setDomain('megumi')">🐺 Megumi</button>
+    <button style="background: #7c3aed;" onclick="setGojo()">Gojo</button>
+    <button style="background: #732727;" onclick="setSukuna()">Sukuna</button>
+    <button style="background: #0d9488;" onclick="setMahito()">Mahito</button>
+    <button style="background: #eab308;" onclick="setMegumi()">Megumi</button>
   </div>
 
-  <!-- Reset Button -->
-  <button id="back-btn" onclick="resetDesktop()">⬅ Back to Main</button>
+  <!-- Back Button -->
+  <button id="back-btn" onclick="resetDesktop()">Back to Main</button>
 
   <script>
-    let currentAudio = null;
+    var defaultNasaImage = "";
+    var audio = new Audio();
+    var voiceEffect = new Audio(); 
 
-    const wallpapers = {
-      gojo: "https://wallpapercave.com/wp/wp12325840.jpg",
-      sukuna: "https://i.pinimg.com/originals/db/96/d6/db96d6a89f37c3f25dbe576406514dee.jpg",
-      mahito: "https://images8.alphacoders.com/135/1353166.png",
-      megumi: "https://images3.alphacoders.com/134/1348123.png"
-    };
+    function loadRandomNasaBackground() {
+      var apiKey = "T5jztR1aRxXeavTvevaMwxAUAMFijxEK0FbJN5dI";
+      var nasaUrl = "https://api.nasa.gov/planetary/apod?api_key=" + apiKey + "&count=1";
 
-    const tracks = {
-      gojo: "https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73427.mp3",
-      sukuna: "https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3",
-      mahito: "https://cdn.pixabay.com/download/audio/2022/10/14/audio_99391e43d9.mp3",
-      megumi: "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3"
-    };
+      fetch(nasaUrl)
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(data) {
+          var item = data[0];
+          if (item && item.media_type === "image") {
+            var imageUrl = item.url;
+            var imgPreloader = new Image();
+            imgPreloader.src = imageUrl;
+
+            imgPreloader.onload = function() {
+              defaultNasaImage = imageUrl;
+              document.body.style.backgroundImage = "url('" + imageUrl + "')";
+            };
+          } else {
+            loadRandomNasaBackground();
+          }
+        })
+        .catch(function(error) {
+          console.log("Error Loading NASA image: " + error);
+        });
+    }
+
+    loadRandomNasaBackground();
 
     function searchGoogle() {
-      const query = document.getElementById('search-input').value;
-      if (query.trim() !== '') {
-        window.open('https://www.google.com/search?q=' + encodeURIComponent(query), '_blank');
+      var query = document.getElementById('search-input').value;
+      if (query !== "") {
+        window.open("https://www.google.com/search?q=" + encodeURIComponent(query)); 
       }
     }
 
-    function setDomain(domain) {
-      // 1. Change Wallpaper
-      document.body.style.backgroundImage = `url('${wallpapers[domain]}')`;
+    function playDomainVoice(voiceUrl, musicUrl) {
+      audio.pause();
+      voiceEffect.pause();
 
-      // 2. Play Audio Track
-      if (currentAudio) {
-        currentAudio.pause();
-      }
-      currentAudio = new Audio(tracks[domain]);
-      currentAudio.loop = true;
-      currentAudio.play().catch(() => {});
+      voiceEffect = new Audio(voiceUrl);
+      voiceEffect.play().catch(function(e) {
+        console.log("Voice playback error: " + e);
+      });
 
-      // 3. Show Reset Button
+      voiceEffect.onended = function() {
+        audio = new Audio(musicUrl);
+        audio.loop = true;
+        audio.play().catch(function(e) {
+          console.log("Music playback error: " + e);
+        });
+      };
+    }
+
+    function setGojo() {
+      document.body.style.backgroundImage = "url('https://w0.peakpx.com/wallpaper/112/868/HD-wallpaper-gojo-cursed-spirits-domain-expansion-hollow-purple-jujutsu-kaisen-void.jpg')";
+      playDomainVoice("rpreplay_final1623689697_mov.mp3", "https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73427.mp3");
+      document.getElementById('back-btn').style.display = 'block';      
+    }
+      
+    function setSukuna() {
+      document.body.style.backgroundImage = "url('https://i.pinimg.com/originals/db/96/d6/db96d6a89f37c3f25dbe576406514dee.jpg')";
+      playDomainVoice("rpreplay_final1623689697_mov.mp3", "https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3");
+      document.getElementById('back-btn').style.display = 'block';
+    }
+
+    function setMahito() {
+      document.body.style.backgroundImage = "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOtv1xcz7zVF0gUHdWVxRyVqeYhQr6xZ6heNNijBmD6g&s=10')";
+      playDomainVoice("rpreplay_final1623689697_mov.mp3", "https://cdn.pixabay.com/download/audio/2022/10/14/audio_99391e43d9.mp3");
+      document.getElementById('back-btn').style.display = 'block';
+    }
+
+    function setMegumi() {
+      document.body.style.backgroundImage = "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_PYd6QIBZ-M3SFf65iSHG7t3BE34BOsLF1qWfvETkQg&s=10')";
+      playDomainVoice("rpreplay_final1623689697_mov.mp3", "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3");
       document.getElementById('back-btn').style.display = 'block';
     }
 
     function resetDesktop() {
-      document.body.style.backgroundImage = "url('https://images7.alphacoders.com/132/1322952.jpeg')";
-      if (currentAudio) {
-        currentAudio.pause();
+      if (defaultNasaImage !== "") {
+        document.body.style.backgroundImage = "url('" + defaultNasaImage + "')";
       }
+      voiceEffect.pause();
+      audio.pause();
       document.getElementById('back-btn').style.display = 'none';
     }
   </script>
