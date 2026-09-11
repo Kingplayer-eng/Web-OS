@@ -26,7 +26,7 @@
       padding: 10px;
       border-radius: 20px;
       border: none;
-      width: 270px;
+      width: 280px;
     }
 
     .search-box button {
@@ -41,7 +41,7 @@
     /* Bottom Dock */
     .dock {
       position: absolute;
-      bottom: 20px;
+      bottom: 100px;
       left: 35px;
       background: black;
       padding: 10px;
@@ -52,7 +52,7 @@
       padding: 8px 12px;
       border-radius: 10px;
       border: none;
-      color: white;
+      color: rgb(21, 11, 11);
       cursor: pointer;
       margin: 2px;
     }
@@ -61,7 +61,7 @@
     #back-btn {
       display: none;
       position: absolute;
-      bottom: 20px;
+      bottom: 100px;
       right: 20px;
       padding: 10px 15px;
       background: #334155;
@@ -87,7 +87,7 @@
     .notepad-header {
       font-size: 14px;
       font-weight: bold;
-      color: #a855f7;
+      color: #5c4ae0;
       text-align: center;
       margin-bottom: 8px;
     }
@@ -110,21 +110,21 @@
 
   <!-- Floating Notepad -->
   <div class="notepad">
-    <div class="notepad-header">Cursed Notes</div>
-    <textarea placeholder="Type your notes here..."></textarea>
+    <div class="notepad-header">Cursed Notebook x JJK</div>
+    <textarea placeholder="Type your cursed notes here..."></textarea>
   </div>
 
   <!-- Search -->
   <div class="search-box">
-    <input type="text" id="search-input" placeholder="Search Google...">
+    <input type="text" id="search-input" placeholder="Search Anything...">
     <button onclick="searchGoogle()">Search</button>
   </div>
 
   <!-- Dock -->
   <div class="dock">
-    <button style="background: #7c3aed;" onclick="setGojo()">Gojo</button>
-    <button style="background: #732727;" onclick="setSukuna()">Sukuna</button>
-    <button style="background: #0d9488;" onclick="setMahito()">Mahito</button>
+    <button style="background: #301aab;" onclick="setGojo()">Gojo</button>
+    <button style="background: #791818;" onclick="setSukuna()">Sukuna</button>
+    <button style="background: #0d8d82;" onclick="setMahito()">Mahito</button>
     <button style="background: #eab308;" onclick="setMegumi()">Megumi</button>
   </div>
 
@@ -192,7 +192,7 @@
     }
 
     function setGojo() {
-      document.body.style.backgroundImage = "url('https://w0.peakpx.com/wallpaper/112/868/HD-wallpaper-gojo-cursed-spirits-domain-expansion-hollow-purple-jujutsu-kaisen-void.jpg')";
+      document.body.style.backgroundImage = "url('https://static0.cbrimages.com/wordpress/wp-content/uploads/2024/02/satoru-gojo-domain-expansion.jpg?w=1200&h=675&fit=crop')";
       playDomainVoice("rpreplay_final1623689697_mov.mp3", "https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73427.mp3");
       document.getElementById('back-btn').style.display = 'block';      
     }
