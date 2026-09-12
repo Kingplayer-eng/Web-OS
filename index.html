@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <title>JJK WebOS</title>
+   <head>
+
+  <title>JJK Inspired WebOS</title>
+
   <style>
     body {
       margin: 0;
@@ -16,7 +17,7 @@
       transition: background-image 0.5s ease-in-out;
     }
 
-    /* Search Box */
+  
     .search-box {
       text-align: center;
       margin-top: 80px;
@@ -37,8 +38,6 @@
       color: white;
       cursor: pointer;
     }
-
-    /* Bottom Dock */
     .dock {
       position: absolute;
       bottom: 100px;
@@ -57,7 +56,7 @@
       margin: 2px;
     }
 
-    /* Back Button */
+    
     #back-btn {
       display: none;
       position: absolute;
@@ -104,31 +103,36 @@
       outline: none;
       box-sizing: border-box;
     }
+
   </style>
 </head>
 <body>
+  <p id="battery"></p>
+  <p id="toolbar_dt"></p>
+</div>
+    </div>
 
-  <!-- Floating Notepad -->
+  
   <div class="notepad">
     <div class="notepad-header">Cursed Notebook x JJK</div>
     <textarea placeholder="Type your cursed notes here..."></textarea>
   </div>
 
-  <!-- Search -->
-  <div class="search-box">
+  
+                   <div class="search-box">
     <input type="text" id="search-input" placeholder="Search Anything...">
     <button onclick="searchGoogle()">Search</button>
   </div>
 
-  <!-- Dock -->
+  
   <div class="dock">
-    <button style="background: #301aab;" onclick="setGojo()">Gojo</button>
-    <button style="background: #791818;" onclick="setSukuna()">Sukuna</button>
-    <button style="background: #0d8d82;" onclick="setMahito()">Mahito</button>
-    <button style="background: #eab308;" onclick="setMegumi()">Megumi</button>
+                    <button style="background: #301aab;" onclick="setGojo()">Gojo</button>
+     <button style="background: #791818;" onclick="setSukuna()">Sukuna</button>
+       <button style="background: #0d8d82;" onclick="setMahito()">Mahito</button>
+     <button style="background: #eab308;" onclick="setMegumi()">Megumi</button>
   </div>
 
-  <!-- Back Button -->
+  
   <button id="back-btn" onclick="resetDesktop()">Back to Main</button>
 
   <script>
@@ -140,7 +144,7 @@
       var apiKey = "T5jztR1aRxXeavTvevaMwxAUAMFijxEK0FbJN5dI";
       var nasaUrl = "https://api.nasa.gov/planetary/apod?api_key=" + apiKey + "&count=1";
 
-      fetch(nasaUrl)
+       fetch(nasaUrl)
         .then(function(response) {
           return response.json();
         })
@@ -169,7 +173,7 @@
     function searchGoogle() {
       var query = document.getElementById('search-input').value;
       if (query !== "") {
-        window.open("https://www.google.com/search?q=" + encodeURIComponent(query)); 
+        window.open ("https://www.google.com/search?q=" + encodeURIComponent(query)); 
       }
     }
 
@@ -191,7 +195,7 @@
       };
     }
 
-    function setGojo() {
+              function setGojo() {
       document.body.style.backgroundImage = "url('https://static0.cbrimages.com/wordpress/wp-content/uploads/2024/02/satoru-gojo-domain-expansion.jpg?w=1200&h=675&fit=crop')";
       playDomainVoice("rpreplay_final1623689697_mov.mp3", "https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73427.mp3");
       document.getElementById('back-btn').style.display = 'block';      
@@ -219,9 +223,7 @@
       if (defaultNasaImage !== "") {
         document.body.style.backgroundImage = "url('" + defaultNasaImage + "')";
       }
-      voiceEffect.pause();
-      audio.pause();
-      document.getElementById('back-btn').style.display = 'none';
+     
     }
   </script>
 
