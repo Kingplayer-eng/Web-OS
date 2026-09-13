@@ -1,1 +1,151 @@
 
+
+
+body {
+      margin: 0;
+      height: 100vh;
+      background-image: url('https://images7.alphacoders.com/132/1322952.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      font-family: 'Fira Code', monospace;
+        color: rgb(99, 42, 42);
+    
+    }
+
+  
+    .search-box input {
+      padding: 20px;
+      border-radius: 50px;
+      border: none;
+      width: 280px;
+    }
+
+    .search-box button {
+      padding: 10px 15px;
+      border-radius: 15px;
+      border: none;
+      background: #8b4166;   
+      color: white;
+      cursor: pointer;
+    }
+    .dock {
+      position: absolute;
+      bottom: 10px;
+      left: 290px;
+      background: rgb(0, 0, 0);
+      padding: 30px;
+      border-radius: 60px;
+    }
+
+    .dock button {
+      padding: 8px 12px;
+      border-radius: 10px;
+      border: none;
+      color: rgb(21, 11, 11);
+      cursor: pointer;
+      margin: 2px;
+
+    }
+    
+
+    
+    #back-btn {
+      display: none;
+      position: absolute;
+      bottom: 100px;
+      right: 20px;
+      padding: 10px 15px;
+      background: #334155;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    
+    .notepad {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 220px;
+      background: rgba(0, 0, 0, 0.75);
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+
+    .notepad-header {
+      font-size: 14px;
+      font-weight: bold;
+      color: #5c4ae0;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .notepad textarea {
+      width: 100%;
+      height: 120px;
+      background: transparent;
+      border: none;
+      color: whitesmoke;
+      font-family: 'Fira Code', monospace;
+      font-size: 12px;
+      resize: none;
+      outline: none;
+      box-sizing: border-box;
+    }
+
+
+
+   .notification-space{
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%); /* Centers the banner perfectly */
+  
+  background-color: rgba(15, 23, 42, 0.95); /* Dark background */
+  color: #ffffff; /* Crisp white text so it is readable */
+  
+     border-radius: 20px;
+   padding: 14px 40px 14px 16px;
+   border: 1px solid #6f8aae;
+   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    display: flex;
+  align-items: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 14px;
+  z-index: 9999;
+  
+  animation: slideIn 0.4s ease-out forwards; 
+}
+
+.close-btn {
+  position: absolute;
+        top: 8px;
+               right: 8px;
+                  background: transparent;
+                       color: rgb(199, 170, 26);
+                       font-size: 16px;
+                          font-weight: bolder;
+                             padding: 4px 8px;
+                               border-radius: 10px;
+                                    cursor: pointer;
+}
+
+.close-btn:hover {           
+                     background-color: rgba(255, 255, 255, 0.2);
+                             color: #ffffff;
+}
+@keyframes slideIn {
+  from {
+                 opacity: 0;
+               transform: translate(-50%, -20px);
+  }
+  to {
+                opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+      
