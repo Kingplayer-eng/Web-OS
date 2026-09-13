@@ -4,109 +4,19 @@
 
   <title>JJK Inspired WebOS</title>
 
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background-image: url('https://images7.alphacoders.com/132/1322952.jpeg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      font-family: 'Fira Code', monospace;
-      color: whitesmoke;
-      transition: background-image 0.5s ease-in-out;
-    }
-
-  
-    .search-box {
-      text-align: center;
-      margin-top: 80px;
-    }
-
-    .search-box input {
-      padding: 10px;
-      border-radius: 20px;
-      border: none;
-      width: 280px;
-    }
-
-    .search-box button {
-      padding: 10px 15px;
-      border-radius: 15px;
-      border: none;
-      background: #8b4166;   
-      color: white;
-      cursor: pointer;
-    }
-    .dock {
-      position: absolute;
-      bottom: 100px;
-      left: 35px;
-      background: black;
-      padding: 10px;
-      border-radius: 20px;
-    }
-
-    .dock button {
-      padding: 8px 12px;
-      border-radius: 10px;
-      border: none;
-      color: rgb(21, 11, 11);
-      cursor: pointer;
-      margin: 2px;
-    }
-
-    
-    #back-btn {
-      display: none;
-      position: absolute;
-      bottom: 100px;
-      right: 20px;
-      padding: 10px 15px;
-      background: #334155;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-
-    /* Floating Notepad */
-    .notepad {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 220px;
-      background: rgba(0, 0, 0, 0.75);
-      border: 1px solid #334155;
-      border-radius: 12px;
-      padding: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    }
-
-    .notepad-header {
-      font-size: 14px;
-      font-weight: bold;
-      color: #5c4ae0;
-      text-align: center;
-      margin-bottom: 8px;
-    }
-
-    .notepad textarea {
-      width: 100%;
-      height: 120px;
-      background: transparent;
-      border: none;
-      color: whitesmoke;
-      font-family: 'Fira Code', monospace;
-      font-size: 12px;
-      resize: none;
-      outline: none;
-      box-sizing: border-box;
-    }
+  <link rel="StyleSheet" href="style.css">
+   
 
   </style>
 </head>
 <body>
+   
+   <div id="os-notification" class="notification-space">
+              <div class ="notification-content">
+                 <span>Welcome to JJK inspired WebOs! System initializing...</span>
+                </div>
+                   <button class="close-btn" onclick="closenotification()" aria-label="close">✓<button>
+                    </div>
   <p id="battery"></p>
   <p id="toolbar_dt"></p>
 </div>
@@ -123,6 +33,11 @@
     <input type="text" id="search-input" placeholder="Search Anything...">
     <button onclick="searchGoogle()">Search</button>
   </div>
+    
+     @Keyframes mySlide{
+        from{margin-left: 90%}
+        to(margin-left: 0%;)
+     }
 
   
   <div class="dock">
@@ -154,6 +69,8 @@
             var imageUrl = item.url;
             var imgPreloader = new Image();
             imgPreloader.src = imageUrl;
+                       
+           
 
             imgPreloader.onload = function() {
               defaultNasaImage = imageUrl;
@@ -225,6 +142,7 @@
       }
      
     }
+    
   </script>
 
 </body>
