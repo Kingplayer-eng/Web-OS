@@ -7,12 +7,11 @@ An interactive web OS 4 domains written with html and CSS .
 - New images related to space occur whenever exit out of domain expansion button done with NASA API keys .
 - Dedicated search feature.
 - A notepad at the corner so you can write anything .
+- Added welcome screen when open.
 
 ## Demo
 Try out the live web OS here: https://kingplayer-eng.github.io/Web-OS/
 
-## AI Usage 
--Just for syntax errors and mistakes in code.
 
 ## Project Goal 
 - Make it smooth working.
