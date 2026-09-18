@@ -1,6 +1,5 @@
 
 
-
 body {
       margin: 0;
       height: 100vh;
@@ -12,6 +11,7 @@ body {
         color: rgb(99, 42, 42);
     
     }
+
 
   
     .search-box input {
@@ -103,10 +103,10 @@ body {
   position: fixed;
   top: 20px;
   left: 50%;
-  transform: translateX(-50%); /* Centers the banner perfectly */
+  transform: translateX(-50%);
   
-  background-color: rgba(15, 23, 42, 0.95); /* Dark background */
-  color: #ffffff; /* Crisp white text so it is readable */
+  background-color: rgba(15, 23, 42, 0.95); 
+  color: #ffffff; 
   
      border-radius: 20px;
    padding: 14px 40px 14px 16px;
@@ -149,3 +149,158 @@ body {
   }
 }
       
+           #toolbar_dt {
+            position: fixed;
+            top:60px;
+             left:20px;
+                 
+                 
+                  font-family: 'Fira Code', monospace;
+                    font-size: 14px;
+                     font-weight: bold;
+                       color: #0dadb8;
+                        
+                    background: rgba(0,0,0,0.6);
+                     border-radius:12px;
+                       padding: 6px 12px;
+                         border: 1px solid rgba(0,240,255,0.3);
+                          box-shadow: 0 10px  rgba(0,240,255,0.2);
+                           z-index:9999;
+           }
+
+
+    .desktop-app{
+       position:absolute;
+        left: 25px;
+         top:120px;
+           display: flex;
+            flex-direction: column;
+             align-items: center;
+              cursor: pointer;
+               z-index: 100;
+
+    }
+
+  .app-icon{
+     height: 50px;
+      width: 50px;
+       background: rgba(15,23,42,0.85);
+        border-radius: 20px;
+        border: 1px solid #7c3aeb;
+         display: flex;
+          align-items: center;
+          justify-content: center;
+           font-size: 24px;
+            box-shadow: 0 4px 12px rgba(124,58,237,0.3);
+             transition:  transform 0.2s ease , box-shadow 0.2s ease;
+
+  }
+   
+  .app-icon:hover{
+     transform: scale(1.00);
+       box-shadow: 0 0 15px rgba(168,85,247,0.6);
+  }
+
+    .app-lable{
+       margin-top: 6px;
+        font-size: 12px;
+         color: #f8fafc;
+          font-family:  'Fira code ', monospace;
+          text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+
+    }
+
+    /* POP-UP WINDOW FRAME (DARK PURPLE & CENTERED) */
+.app-window {
+  position: fixed;
+  display: none; /* Hidden by default until icon is clicked */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centers on screen */
+  width: 650px;
+  max-width: 90vw;
+  height: 480px;
+  max-height: 85vh;
+  background: rgba(15, 23, 42, 0.96); /* Dark background */
+  border: 1px solid #7c3aed;
+  border-radius: 16px;
+  box-shadow: 0 0 30px rgba(124, 58, 237, 0.5);
+  z-index: 9990;
+  overflow: hidden;
+  font-family: 'Fira Code', monospace;
+  color: #f8fafc;
+}
+
+/* WINDOW TOP BAR */
+.window-header {
+  background: #2e1065;
+  padding: 12px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 14px;
+  color: #ffffff;
+  border-bottom: 1px solid #7c3aed;
+}
+
+.window-close {
+  background: transparent;
+  border: none;
+  color: #ef4444;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* WINDOW INSIDE BODY */
+.window-body {
+  padding: 18px;
+  height: calc(100% - 45px);
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* CARD INSIDE THE WINDOW */
+.char-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.char-card h3 {
+  margin: 0 0 12px 0;
+  color: #a855f7;
+  font-size: 20px;
+}
+
+/* FLEXBOX LAYOUT (SIDE-BY-SIDE IMAGE & TEXT) */
+.char-card-content {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.char-img {
+  width: 130px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid #7c3aed;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  flex-shrink: 0;
+}
+
+.char-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.char-info p {
+  margin: 6px 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #e2e8f0;
+}
