@@ -8,6 +8,7 @@ An interactive web OS 4 domains written with html and CSS .
 - Dedicated search feature.
 - A notepad at the corner so you can write anything .
 - Added welcome screen when open.
+- Added Characters knowledge . Gojo as of now .
 
 ## Demo
 Try out the live web OS here: https://kingplayer-eng.github.io/Web-OS/
