@@ -1,49 +1,89 @@
 <!DOCTYPE html>
-<html>
-   <head>
-
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
   <title>JJK Inspired WebOS</title>
-
-      <link rel="StyleSheet" href="style.css">
-   
-
-  </style>
-
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-   
-   <div id="os-notification" class="notification-space">
-              <div class ="notification-content">
-                   <span>Welcome to JJK inspired WebOs! System initializing...</span>
-                </div>
-                   <button class="close-btn" onclick="closenotification()" aria-label="close">✓<button>
-                        </div>
- 
-  <p id="toolbar_dt"></p>
-</div>
-    </div>
 
-  
+  <!-- Top Notification -->
+  <div id="os-notification" class="notification-space">
+    <div class="notification-content">
+      <span>Welcome to JJK inspired WebOS! System initializing...</span>
+    </div>
+    <button class="close-btn" onclick="closeNotification()" aria-label="close">✓</button>
+  </div>
+
+  <p id="toolbar_dt"></p>
+
+  <!-- Notepad -->
   <div class="notepad">
-           <div class="notepad-header">Cursed Notebook x JJK</div>
+    <div class="notepad-header">Cursed Notebook x JJK</div>
     <textarea placeholder="Type your cursed notes here..."></textarea>
   </div>
 
-  
-                   <div class="search-box">
+  <!-- Character App Modal Window -->
+  <div id="char-app" class="app-window">
+    <div class="window-header">
+      <span>JJK Character Dossier</span>
+      <button class="window-close" onclick="toggleCharApp()">✕</button>
+    </div>
+    
+    <div class="window-body">
+      <div class="char-card">
+        <h3 id="char-name">Satoru Gojo</h3>
+        
+        <div class="char-card-content">
+          <img id="char-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRm-j45xQP8Ud3v0V2Sm3o41JpL8J7PTKPJMroCfPPgVg&s=10" class="char-img" alt="Satoru Gojo">
+
+          <div class="char-info">
+            <p><strong>Technique:</strong> <span id="char-technique">Limitless / Six Eyes</span></p>
+            <p><strong>Domain:</strong> <span id="char-domain">Unlimited Void</span></p>
+            <p id="char-desc">Satoru Gojo is widely recognized as the strongest Jujutsu Sorcerer in existence. Through his Six Eyes and the Limitless technique, he can manipulate space at an atomic level. His Domain Expansion, Unlimited Void, overloads the opponent's brain with endless perception and information.</p>
+          </div>
+        </div>
+
+        <!-- Embedded Spotify Player -->
+        <div class="spotify-container" style="margin-top: 15px;">
+          <iframe id="spotify-player"
+                  src="https://open.spotify.com/embed/track/1SuZFlhyJx8Tkz9TDvNEJ1?utm_source=generator"
+                  width="100%"
+                  height="80"
+                  frameborder="0"
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy">
+          </iframe>
+        </div>
+      </div>
+        
+      <div class="char-nav">
+        <button onclick="prevChar()">◀ Previous</button>
+        <button onclick="nextChar()">Next ▶</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search Box -->
+  <div class="search-box">
     <input type="text" id="search-input" placeholder="Search Anything...">
     <button onclick="searchGoogle()">Search</button>
   </div>
-   
-  
-  <div class="dock">
-                    <button style="background: #301aab;" onclick="setGojo()">Gojo</button>
-     <button style="background: #791818;" onclick="setSukuna()">Sukuna</button>
-       <button style="background: #0d8d82;" onclick="setMahito()">Mahito</button>
-     <button style="background: #eab308;" onclick="setMegumi()">Megumi</button>
+
+  <!-- Desktop Icon -->
+  <div class="desktop-app" onclick="toggleCharApp()">
+    <div class="app-icon">📜</div>
+    <span class="app-label">Characters</span>
   </div>
 
-  
+  <!-- Dock -->
+  <div class="dock">
+    <button style="background: #301aab;" onclick="setGojo()">Gojo</button>
+    <button style="background: #791818;" onclick="setSukuna()">Sukuna</button>
+    <button style="background: #0d8d82;" onclick="setMahito()">Mahito</button>
+    <button style="background: #eab308;" onclick="setMegumi()">Megumi</button>
+  </div>
+
   <button id="back-btn" onclick="resetDesktop()">Back to Main</button>
 
   <script>
@@ -51,29 +91,30 @@
     var audio = new Audio();
     var voiceEffect = new Audio(); 
 
+    function closeNotification() {
+      var notification = document.getElementById('os-notification');
+      if (notification) {
+        notification.style.display = 'none';
+      }
+    }
+
     function loadRandomNasaBackground() {
       var apiKey = "T5jztR1aRxXeavTvevaMwxAUAMFijxEK0FbJN5dI";
       var nasaUrl = "https://api.nasa.gov/planetary/apod?api_key=" + apiKey + "&count=1";
 
-       fetch(nasaUrl)
-        .then(function(response) {
-          return response.json();
-        })
+      fetch(nasaUrl)
+        .then(function(response) { return response.json(); })
         .then(function(data) {
           var item = data[0];
           if (item && item.media_type === "image") {
             var imageUrl = item.url;
             var imgPreloader = new Image();
             imgPreloader.src = imageUrl;
-                       
-           
 
             imgPreloader.onload = function() {
               defaultNasaImage = imageUrl;
               document.body.style.backgroundImage = "url('" + imageUrl + "')";
             };
-          } else {
-            loadRandomNasaBackground();
           }
         })
         .catch(function(error) {
@@ -86,7 +127,7 @@
     function searchGoogle() {
       var query = document.getElementById('search-input').value;
       if (query !== "") {
-        window.open ("https://www.google.com/search?q=" + encodeURIComponent(query)); 
+        window.open("https://www.google.com/search?q=" + encodeURIComponent(query)); 
       }
     }
 
@@ -108,12 +149,12 @@
       };
     }
 
-              function setGojo() {
+    function setGojo() {
       document.body.style.backgroundImage = "url('https://static0.cbrimages.com/wordpress/wp-content/uploads/2024/02/satoru-gojo-domain-expansion.jpg?w=1200&h=675&fit=crop')";
       playDomainVoice("rpreplay_final1623689697_mov.mp3", "https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73427.mp3");
       document.getElementById('back-btn').style.display = 'block';      
     }
-      
+
     function setSukuna() {
       document.body.style.backgroundImage = "url('https://i.pinimg.com/originals/db/96/d6/db96d6a89f37c3f25dbe576406514dee.jpg')";
       playDomainVoice("rpreplay_final1623689697_mov.mp3", "https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3");
@@ -136,10 +177,60 @@
       if (defaultNasaImage !== "") {
         document.body.style.backgroundImage = "url('" + defaultNasaImage + "')";
       }
-     
     }
-    
-  </script>
 
+    // Character Data & Logic
+    var character = [
+      {
+        name: "Satoru Gojo",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRm-j45xQP8Ud3v0V2Sm3o41JpL8J7PTKPJMroCfPPgVg&s=10",
+        technique: "Limitless / Six Eyes",
+        domain: "Unlimited Void",
+        desc: "Satoru Gojo is widely recognized as the strongest Jujutsu Sorcerer in existence.",
+        spotifyTrack: "https://open.spotify.com/embed/track/1SuZFlhyJx8Tkz9TDvNEJ1?utm_source=generator"
+      }
+    ];
+
+    var currentCharIndex = 0;
+
+    function renderCharacter() {
+      var char = character[currentCharIndex];
+
+      document.getElementById('char-name').textContent = char.name;
+      document.getElementById('char-img').src = char.img;
+      document.getElementById('char-technique').textContent = char.technique;
+      document.getElementById('char-domain').textContent = char.domain;
+      document.getElementById('char-desc').textContent = char.desc;
+
+      var spotifyPlayer = document.getElementById('spotify-player');
+      if (spotifyPlayer && char.spotifyTrack) {
+        spotifyPlayer.src = char.spotifyTrack;
+      }
+    }
+
+    renderCharacter();
+
+    function toggleCharApp() {
+      var app = document.getElementById('char-app');
+      if (app) {
+        if (app.style.display === 'block') { 
+          app.style.display = 'none';
+        } else {
+          app.style.display = 'block';
+        }
+      }
+    }
+
+    function updateClock() {
+      var clockElement = document.getElementById('toolbar_dt');
+      if (clockElement) {
+        var now = new Date();
+        clockElement.textContent = now.toLocaleTimeString();
+      }
+    }
+
+    updateClock();
+    setInterval(updateClock, 1000);
+  </script>
 </body>
 </html>
