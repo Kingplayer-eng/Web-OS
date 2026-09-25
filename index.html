@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>JJK Inspired WebOS</title>
+                        <title>JJK Inspired WebOS</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -10,7 +10,7 @@
   <!-- Top Notification -->
   <div id="os-notification" class="notification-space">
     <div class="notification-content">
-      <span>Welcome to JJK inspired WebOS! System initializing...</span>
+                <span>Welcome to JJK inspired WebOS! System initializing...</span>
     </div>
     <button class="close-btn" onclick="closeNotification()" aria-label="close">✓</button>
   </div>
@@ -20,7 +20,7 @@
   <!-- Notepad -->
   <div class="notepad">
     <div class="notepad-header">Cursed Notebook x JJK</div>
-    <textarea placeholder="Type your cursed notes here..."></textarea>
+                <textarea placeholder="Type your cursed notes here..."></textarea>
   </div>
 
   <!-- Character App Modal Window -->
@@ -64,27 +64,88 @@
     </div>
   </div>
 
+  <!-- Live Weather App Window -->
+  <div id="weather-app" class="app-window">
+    <div class="window-header">
+      <span>JJK WEATHER STATION</span>
+      <button class="window-close" onclick="toggleWeatherApp()">✕</button>
+    </div>
+    <div class="window-body">
+      <div class="char-card" style="text-align: center;">
+                    <h3 style="color: #0dadb8; margin-bottom: 5px;">SHIBUYA, TOKYO</h3>
+        <div id="weather-icon" style="font-size: 48px; margin: 10px 0;">⌛</div>
+                 <p id="weather-temp" style="font-size: 22px; font-weight: bold; margin: 5px 0;">-- °C</p>
+               <p id="weather-condition" style="color:#a855f7; font-weight: bold;">Loading Live weather...</p>
+        <p id="weather-wind" style="font-size: 12px; color: #94a3b8; margin-top: 10px;">Wind: -- km/h</p>
+                 </div>
+    </div>
+  </div>
+
   <!-- Search Box -->
   <div class="search-box">
     <input type="text" id="search-input" placeholder="Search Anything...">
     <button onclick="searchGoogle()">Search</button>
   </div>
 
-  <!-- Desktop Icon -->
+  <!-- Desktop Icons -->
   <div class="desktop-app" onclick="toggleCharApp()">
     <div class="app-icon">📜</div>
     <span class="app-label">Characters</span>
   </div>
 
+  <div class="desktop-app weather-app" onclick="toggleWeatherApp()">
+    <div class="app-icon">🌤️</div>
+    <span class="app-label">Weather</span>
+  </div>
+
   <!-- Dock -->
   <div class="dock">
-    <button style="background: #301aab;" onclick="setGojo()">Gojo</button>
-    <button style="background: #791818;" onclick="setSukuna()">Sukuna</button>
-    <button style="background: #0d8d82;" onclick="setMahito()">Mahito</button>
-    <button style="background: #eab308;" onclick="setMegumi()">Megumi</button>
+          <button style="background: #301aab;" onclick="setGojo()">Gojo</button>
+               <button style="background: #791818;" onclick="setSukuna()">Sukuna</button>
+               <button style="background: #0d8d82;" onclick="setMahito()">Mahito</button>
+                     <button style="background: #eab308;" onclick="setMegumi()">Megumi</button>
   </div>
 
   <button id="back-btn" onclick="resetDesktop()">Back to Main</button>
+   
+    <div class="window" id="tictactoe-window">
+       <div class="window-header">
+         <span>Tic-Tac-Toe</span>
+          <button onclick="closeApp('tictactoe-window')">X</button>
+           
+       </div>
+       <div class="desktop-icon" onclick="openApp('tictactoe-window')">
+        <div class=" icon-shape">❌⭕</div>
+          <span>Tic-Tac-Toe</span>
+       </div>
+
+        <div class="winodow" id="tictactoe-window" style="display: none;">
+           <div class="window-header">
+             <span class="window-title"> Tic-Tac-Toe</span>
+             <button class="close-btn" onclick="closeApp('tictactoe-window')">X</button>
+           </div>
+
+            <div class="ttt-board">
+                     
+    
+           <div id="status">Player X Turn</div>
+           
+            <div class="ttt-grid">
+               <button class="cell" onclick="makeMove(this,0)"></button>
+               <button class="cell" onclick="makeMove(this,1)"></button>
+               <button class="cell" onclick="makeMove(this,2)"></button>
+               <button class="cell" onclick="makeMove(this,3)"></button>
+               <button class="cell" onclick="makeMove(this,4)"></button>
+               <button class="cell" onclick="makeMove(this,5)"></button>
+               <button class="cell" onclick="makeMove(this,5)"></button>
+               <button class="cell" onclick="makeMove(this,6)"></button>
+               <button class="cell" onclick="makeMove(this,7)"></button>
+               <button class="cell" onclick="makeMove(this,8)"></button>
+
+            </div>
+            <button id="reset-btn" onclick="resetGame()">Restart Game</button>
+        </div>
+    </div>
 
   <script>
     var defaultNasaImage = "";
@@ -150,30 +211,30 @@
     }
 
     function setGojo() {
-      document.body.style.backgroundImage = "url('https://static0.cbrimages.com/wordpress/wp-content/uploads/2024/02/satoru-gojo-domain-expansion.jpg?w=1200&h=675&fit=crop')";
-      playDomainVoice("rpreplay_final1623689697_mov.mp3", "https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73427.mp3");
-      document.getElementById('back-btn').style.display = 'block';      
+           document.body.style.backgroundImage = "url('https://static0.cbrimages.com/wordpress/wp-content/uploads/2024/02/satoru-gojo-domain-expansion.jpg?w=1200&h=675&fit=crop')";
+              playDomainVoice("rpreplay_final1623689697_mov.mp3", "https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73427.mp3");
+             document.getElementById('back-btn').style.display = 'block';      
     }
 
-    function setSukuna() {
-      document.body.style.backgroundImage = "url('https://i.pinimg.com/originals/db/96/d6/db96d6a89f37c3f25dbe576406514dee.jpg')";
-      playDomainVoice("rpreplay_final1623689697_mov.mp3", "https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3");
-      document.getElementById('back-btn').style.display = 'block';
+                 function setSukuna() {
+             document.body.style.backgroundImage = "url('https://i.pinimg.com/originals/db/96/d6/db96d6a89f37c3f25dbe576406514dee.jpg')";
+           playDomainVoice("rpreplay_final1623689697_mov.mp3", "https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3");
+               document.getElementById('back-btn').style.display = 'block';
     }
 
-    function setMahito() {
-      document.body.style.backgroundImage = "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOtv1xcz7zVF0gUHdWVxRyVqeYhQr6xZ6heNNijBmD6g&s=10')";
-      playDomainVoice("rpreplay_final1623689697_mov.mp3", "https://cdn.pixabay.com/download/audio/2022/10/14/audio_99391e43d9.mp3");
-      document.getElementById('back-btn').style.display = 'block';
+                function setMahito() {
+         document.body.style.backgroundImage = "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOtv1xcz7zVF0gUHdWVxRyVqeYhQr6xZ6heNNijBmD6g&s=10')";
+                 playDomainVoice("rpreplay_final1623689697_mov.mp3", "https://cdn.pixabay.com/download/audio/2022/10/14/audio_99391e43d9.mp3");
+                      document.getElementById('back-btn').style.display = 'block';
+    } 
+
+               function setMegumi() {
+           document.body.style.backgroundImage = "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_PYd6QIBZ-M3SFf65iSHG7t3BE34BOsLF1qWfvETkQg&s=10')";
+                playDomainVoice("rpreplay_final1623689697_mov.mp3", "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3");
+             document.getElementById('back-btn').style.display = 'block';
     }
 
-    function setMegumi() {
-      document.body.style.backgroundImage = "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_PYd6QIBZ-M3SFf65iSHG7t3BE34BOsLF1qWfvETkQg&s=10')";
-      playDomainVoice("rpreplay_final1623689697_mov.mp3", "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3");
-      document.getElementById('back-btn').style.display = 'block';
-    }
-
-    function resetDesktop() {
+              function resetDesktop() {
       if (defaultNasaImage !== "") {
         document.body.style.backgroundImage = "url('" + defaultNasaImage + "')";
       }
@@ -181,13 +242,13 @@
 
     // Character Data & Logic
     var character = [
-      {
-        name: "Satoru Gojo",
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRm-j45xQP8Ud3v0V2Sm3o41JpL8J7PTKPJMroCfPPgVg&s=10",
-        technique: "Limitless / Six Eyes",
-        domain: "Unlimited Void",
-        desc: "Satoru Gojo is widely recognized as the strongest Jujutsu Sorcerer in existence.",
-        spotifyTrack: "https://open.spotify.com/embed/track/1SuZFlhyJx8Tkz9TDvNEJ1?utm_source=generator"
+                {
+                   name: "Satoru Gojo",
+              img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRm-j45xQP8Ud3v0V2Sm3o41JpL8J7PTKPJMroCfPPgVg&s=10",
+                 technique: "Limitless / Six Eyes",
+                   domain: "Unlimited Void",
+              desc: "Satoru Gojo is widely recognized as the strongest Jujutsu Sorcerer in existence.",
+            spotifyTrack: "https://open.spotify.com/embed/track/1SuZFlhyJx8Tkz9TDvNEJ1?utm_source=generator"
       }
     ];
 
@@ -196,11 +257,11 @@
     function renderCharacter() {
       var char = character[currentCharIndex];
 
-      document.getElementById('char-name').textContent = char.name;
-      document.getElementById('char-img').src = char.img;
-      document.getElementById('char-technique').textContent = char.technique;
-      document.getElementById('char-domain').textContent = char.domain;
-      document.getElementById('char-desc').textContent = char.desc;
+                document.getElementById('char-name').textContent = char.name;
+          document.getElementById('char-img').src = char.img;
+                   document.getElementById('char-technique').textContent = char.technique;
+             document.getElementById('char-domain').textContent = char.domain;
+           document.getElementById('char-desc').textContent = char.desc;
 
       var spotifyPlayer = document.getElementById('spotify-player');
       if (spotifyPlayer && char.spotifyTrack) {
@@ -222,15 +283,73 @@
     }
 
     function updateClock() {
-      var clockElement = document.getElementById('toolbar_dt');
+        var clockElement = document.getElementById('toolbar_dt');
       if (clockElement) {
-        var now = new Date();
+             var now = new Date();
         clockElement.textContent = now.toLocaleTimeString();
       }
     }
-
+    
     updateClock();
     setInterval(updateClock, 1000);
+
+    // Weather Logic
+    function getWeatherCondition(code) {
+             if (code === 0) return { text: "Clear Sky", icon: "☀️" };
+         if (code >= 1 && code <= 3) return { text: "Partly Cloudy", icon: "⛅" };
+              if (code >= 45 && code <= 48) return { text: "Foggy", icon: "🌫️" };
+                       if (code >= 51 && code <= 67) return { text: "Rainy", icon: "🌧️" };
+          if (code >= 71 && code <= 77) return { text: "Snowy", icon: "❄️" };
+              if (code >= 80 && code <= 82) return { text: "Rain Shower", icon: "🌦️" };
+      if (code >= 95 && code <= 99) return { text: "Thunderstorm", icon: "⛈️" };
+      return { text: "Unknown", icon: "🌡️" };
+    }
+
+              function fetchLiveWeather() {
+               var apiUrl = "https://api.open-meteo.com/v1/forecast?latitude=35.6580&longitude=139.7016&current_weather=true";
+
+      fetch(apiUrl)
+        .then(function(response) { return response.json(); })
+        .then(function(data) {
+          if (data && data.current_weather) {
+                var temp = data.current_weather.temperature;
+                 var wind = data.current_weather.windspeed;
+                         var code = data.current_weather.weathercode;
+            
+            var weatherInfo = getWeatherCondition(code);
+
+                   document.getElementById('weather-temp').textContent = temp + " °C";
+                          document.getElementById('weather-condition').textContent = weatherInfo.text;
+                            document.getElementById('weather-icon').textContent = weatherInfo.icon;
+                                    document.getElementById('weather-wind').textContent = "Wind Speed: " + wind + " km/h";
+          }
+        })
+        .catch(function(err) {
+          console.log("Weather Fetch Error: " + err);
+        });
+    }
+
+    function toggleWeatherApp() {
+      var app = document.getElementById('weather-app');
+      if (app) {
+        if (app.style.display === 'block') {
+          app.style.display = 'none';
+        } else {
+          app.style.display = 'block';
+          fetchLiveWeather();
+        }
+      }
+    }
+
+    
+    function openApp(windowId) {
+        document.getElementById(windowId).style.display = 'block';
+
+    } 
+     function closeApp(windowId) {
+       document.getElementById(windowId).style.display = 'none';
+       
+     }
   </script>
 </body>
 </html>
