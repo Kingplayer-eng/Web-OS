@@ -1,227 +1,245 @@
-
-
 body {
-      margin: 0;
-      height: 100vh;
-      background-image: url('https://images7.alphacoders.com/132/1322952.jpeg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      font-family: 'Fira Code', monospace;
-        color: rgb(99, 42, 42);
-    
-    }
+   margin: 0;
+     height: 100vh;
+   background-image: url('https://images7.alphacoders.com/132/1322952.jpeg');
+  background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   font-family: 'Fira Code', monospace;
+  color: rgb(99, 42, 42);
+}
 
+.search-box {
+    position: absolute;
+  top: 15px;
+    left: 50%;
+   transform: translateX(-50%);
+   display: flex;
+   gap: 10px;
+   z-index: 100;
+}
 
-  
-    .search-box input {
-      padding: 20px;
-      border-radius: 50px;
-      border: none;
-      width: 280px;
-    }
+.search-box input {
+   padding: 10px 20px;
+    border-radius: 50px;
+   border: none;
+    width: 280px;
+   outline: none;
+}
 
-    .search-box button {
-      padding: 10px 15px;
-      border-radius: 15px;
-      border: none;
-      background: #8b4166;   
+.search-box button {
+  padding: 10px 18px;
+   border-radius: 15px;
+   border: none;
+   background: #8b4166;   
       color: white;
+  cursor: pointer;
+            font-weight: bold;
+}
+
+.dock {
+  position: absolute;
+         bottom: 10px;
+     left: 50%;
+         transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.85);
+         padding: 12px 24px;
+  border-radius: 60px;
+         border: 1px solid #7c3aed;
+       display: flex;
+        gap: 10px;
+         z-index: 100;
+}
+
+.dock button {
+  padding: 8px 16px;
+       border-radius: 10px;
+  border: none;
+        color: #ffffff;
+   font-weight: bold;
+  cursor: pointer;
+        transition: transform 0.2s ease;
+}
+
+.dock button:hover {
+         transform: scale(1.08);
+}
+
+#back-btn {
+  display: none;
+         position: absolute;
+       bottom: 100px;
+        right: 20px;
+        padding: 10px 15px;
+         background: #334155;
+       color: white;
+        border: none;
+   border-radius: 10px;
       cursor: pointer;
-    }
-    .dock {
-      position: absolute;
-      bottom: 10px;
-      left: 290px;
-      background: rgb(0, 0, 0);
-      padding: 30px;
-      border-radius: 60px;
-    }
+       z-index: 100;
+}
 
-    .dock button {
-      padding: 8px 12px;
-      border-radius: 10px;
-      border: none;
-      color: rgb(21, 11, 11);
-      cursor: pointer;
-      margin: 2px;
+.notepad {
+  position: absolute;
+         top: 20px;
+        right: 20px;
+         width: 220px;
+        background: rgba(0, 0, 0, 0.85);
+         border: 1px solid #334155;
+          border-radius: 12px;
+        padding: 10px;
+         box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+             z-index: 100;
+}
 
-    }
-    
+.notepad-header {
+         font-size: 14px;
+          font-weight: bold;
+         color: #a855f7;
+               text-align: center;
+                 margin-bottom: 8px;
+}
 
-    
-    #back-btn {
-      display: none;
-      position: absolute;
-      bottom: 100px;
-      right: 20px;
-      padding: 10px 15px;
-      background: #334155;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-    }
+.notepad textarea {
+           width: 100%;
+          height: 120px;
+         background: transparent;
+     border: none;
+          color: whitesmoke;
+             font-family: 'Fira Code', monospace;
+         font-size: 12px;
+        resize: none;
+     outline: none;
+          box-sizing: border-box;
+}
 
-    
-    .notepad {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 220px;
-      background: rgba(0, 0, 0, 0.75);
-      border: 1px solid #334155;
-      border-radius: 12px;
-      padding: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    }
-
-    .notepad-header {
-      font-size: 14px;
-      font-weight: bold;
-      color: #5c4ae0;
-      text-align: center;
-      margin-bottom: 8px;
-    }
-
-    .notepad textarea {
-      width: 100%;
-      height: 120px;
-      background: transparent;
-      border: none;
-      color: whitesmoke;
-      font-family: 'Fira Code', monospace;
-      font-size: 12px;
-      resize: none;
-      outline: none;
-      box-sizing: border-box;
-    }
-
-
-
-   .notification-space{
-  position: fixed;
+.notification-space {
+    position: fixed;
   top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  
+    left: 50%;
+   transform: translateX(-50%);
   background-color: rgba(15, 23, 42, 0.95); 
-  color: #ffffff; 
-  
-     border-radius: 20px;
+   color: #ffffff; 
+   border-radius: 20px;
    padding: 14px 40px 14px 16px;
-   border: 1px solid #6f8aae;
-   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-    display: flex;
-  align-items: center;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: 14px;
-  z-index: 9999;
-  
+     border: 1px solid #6f8aae;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  display: flex;
+    align-items: center;
+  font-family: 'Fira Code', monospace;
+   font-size: 13px;
+   z-index: 9999;
   animation: slideIn 0.4s ease-out forwards; 
 }
 
 .close-btn {
   position: absolute;
-        top: 8px;
-               right: 8px;
-                  background: transparent;
-                       color: rgb(199, 170, 26);
-                       font-size: 16px;
-                          font-weight: bolder;
-                             padding: 4px 8px;
-                               border-radius: 10px;
-                                    cursor: pointer;
+  top: 8px;
+  right: 8px;
+   background: transparent;
+  color: rgb(199, 170, 26);
+   font-size: 16px;
+   font-weight: bolder;
+   padding: 4px 8px;
+   border-radius: 10px;
+  border: none;
+  cursor: pointer;
 }
 
 .close-btn:hover {           
-                     background-color: rgba(255, 255, 255, 0.2);
-                             color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
 }
+
 @keyframes slideIn {
   from {
-                 opacity: 0;
-               transform: translate(-50%, -20px);
+    opacity: 0;
+    transform: translate(-50%, -20px);
   }
   to {
-                opacity: 1;
+    opacity: 1;
     transform: translate(-50%, 0);
   }
 }
-      
-           #toolbar_dt {
-            position: fixed;
-            top:60px;
-             left:20px;
-                 
-                 
-                  font-family: 'Fira Code', monospace;
-                    font-size: 14px;
-                     font-weight: bold;
-                       color: #0dadb8;
-                        
-                    background: rgba(0,0,0,0.6);
-                     border-radius:12px;
-                       padding: 6px 12px;
-                         border: 1px solid rgba(0,240,255,0.3);
-                          box-shadow: 0 10px  rgba(0,240,255,0.2);
-                           z-index:9999;
-           }
 
 
-    .desktop-app{
-       position:absolute;
-        left: 25px;
-         top:120px;
-           display: flex;
-            flex-direction: column;
-             align-items: center;
-              cursor: pointer;
-               z-index: 100;
+#toolbar_dt {
+  position: fixed;
+   top: 15px;
+  left: 20px;
+    margin: 0;
+   font-family: 'Fira Code', monospace;
+  font-size: 14px;
+    font-weight: bold;
+   color: #0dadb8;
+   background: rgba(0, 0, 0, 0.7);
+    border-radius: 12px;
+  padding: 6px 12px;
+   border: 1px solid rgba(0, 240, 255, 0.3);
+  box-shadow: 0 4px 10px rgba(0, 240, 255, 0.2);
+  z-index: 9999;
+}
 
-    }
 
-  .app-icon{
-     height: 50px;
-      width: 50px;
-       background: rgba(15,23,42,0.85);
-        border-radius: 20px;
-        border: 1px solid #7c3aeb;
-         display: flex;
-          align-items: center;
-          justify-content: center;
-           font-size: 24px;
-            box-shadow: 0 4px 12px rgba(124,58,237,0.3);
-             transition:  transform 0.2s ease , box-shadow 0.2s ease;
+.desktop-sidebar {
+  position: absolute;
+    top: 70px;
+  left: 20px;
+   display: flex;
+  flex-direction: column;
+   gap: 18px;
+  z-index: 100;
+}
 
-  }
-   
-  .app-icon:hover{
-     transform: scale(1.00);
-       box-shadow: 0 0 15px rgba(168,85,247,0.6);
-  }
+.desktop-app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  width: 70px;
+}
 
-    .app-lable{
-       margin-top: 6px;
-        font-size: 12px;
-         color: #f8fafc;
-          font-family:  'Fira code ', monospace;
-          text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+.app-icon {
+  height: 50px;
+  width: 50px;
+  background: rgba(15, 23, 42, 0.85);
+  border-radius: 14px;
+  border: 1px solid #7c3aed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 
-    }
+.app-icon:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.6);
+}
 
-    /* POP-UP WINDOW FRAME (DARK PURPLE & CENTERED) */
+.app-label {
+  margin-top: 6px;
+  font-size: 11px;
+  color: #ffffff;
+  font-family: 'Fira Code', monospace;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+  text-align: center;
+  white-space: nowrap;
+}
+
+
 .app-window {
   position: fixed;
-  display: none; /* Hidden by default until icon is clicked */
+  display: none;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* Centers on screen */
+  transform: translate(-50%, -50%);
   width: 650px;
   max-width: 90vw;
   height: 480px;
   max-height: 85vh;
-  background: rgba(15, 23, 42, 0.96); /* Dark background */
+  background: rgba(15, 23, 42, 0.96);
   border: 1px solid #7c3aed;
   border-radius: 16px;
   box-shadow: 0 0 30px rgba(124, 58, 237, 0.5);
@@ -231,7 +249,7 @@ body {
   color: #f8fafc;
 }
 
-/* WINDOW TOP BAR */
+
 .window-header {
   background: #2e1065;
   padding: 12px 18px;
@@ -253,7 +271,7 @@ body {
   cursor: pointer;
 }
 
-/* WINDOW INSIDE BODY */
+
 .window-body {
   padding: 18px;
   height: calc(100% - 45px);
@@ -261,7 +279,7 @@ body {
   box-sizing: border-box;
 }
 
-/* CARD INSIDE THE WINDOW */
+
 .char-card {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(124, 58, 237, 0.3);
@@ -276,7 +294,6 @@ body {
   font-size: 20px;
 }
 
-/* FLEXBOX LAYOUT (SIDE-BY-SIDE IMAGE & TEXT) */
 .char-card-content {
   display: flex;
   gap: 16px;
@@ -287,9 +304,9 @@ body {
   width: 130px;
   height: 150px;
   object-fit: cover;
-  border-radius: 10px;
-  border: 1px solid #7c3aed;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+     border-radius: 10px;
+               border: 1px solid #7c3aed;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
   flex-shrink: 0;
 }
 
@@ -300,164 +317,55 @@ body {
 
 .char-info p {
   margin: 6px 0;
-  font-size: 13px;
-  line-height: 1.5;
-  color: #e2e8f0;
+   font-size: 13px;
+   line-height: 1.5;
+   color: #e2e8f0;
 }
 
- 
- .desktop-app {
-    position: absolute;
-     left: 27px;
-      top: 125px;
-       flex-direction: column;
-        display:flex;
-          align-items: center;
-           cursor: pointer;
-             z-index: 100;
 
+#status {
+      font-size: 1.1rem;
+     font-weight: bold;
+       margin-bottom: 15px;
+  color: #a6e3a1;
+}
 
- }
-
-  .desktop-app.weather-app{
-     top:210px;
-  }
-
-
-   .desktop-icon {
-     width: 80px;
-      display: flex;
-       flex-direction: column;
-        align-items: center;
-         cursor: pointer;
-          padding: 10px;
-           border-radius: 10px;
-            transition: background 0.2s;
-
-
-   }
-
-    .desktop-icon:hover {
-       background: rgba(255, 255, 255 , 0.15);
-
-    }
-
-     .icon-shape {
-       width: 50px;
-        height: 50px;
-         background: #1e1e2e;
-          border-radius: 14px;
-           display: flex;
-            align-items: center;
-             justify-content: center;
-              font-size: 1.2rem;
-               box-shadow: 0 4px 10px rdba(0, 0 , 0 , 0.3);
-
-     }
-
-        .desktop-icon span{
-           color: #ffff;
-            font-size : 0.8rem;
-             margin-top: 6px;
-              text-align: center;
-
-        }
-
-
-
-        .window {
-          position: absolute;
-           top: 15%;
-            left: 30%;
-             width: 320px;
-              background: #11111b;
-               border: 1px solid #313244;
-                border-radius: 10px;
-                 box-shadow: 0 10px 30px rgba(0,0,0 , 0.5) ;
-                  overflow: hidden;
-                  font-family: Arial, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-                  color: #cdd6f4;
-                  
-        }
-         
-         .window-header {
-           background: #181825;
-            padding: 10px 15px;
-             display:flex;
-             justify-content: space-between;
-              align-items: center;
-               border-bottom: 1px solid #313244;
-
-         }
-
-         .close-btn {
-           background: #f38ba8;
-            border: none;
-             color: #11111b;
-              font-weight: bold;
-               border-radius: 20px;
-                width: 22px;
-                height: 22px;
-                 cursor: pointer;
-         }
-
-         .window-body {
-           text-align: center;
-            padding: 20px;
-
-         }
-
-        #status {
-          font-size: 1.1rem;
-           font-weight: bold;
-            margin-bottom: 15px;
-             color: #a6a3a1;
-             
-        }
-
-    .ttt-board {
-      display: grid;
+.ttt-board {
+  display: grid;
        grid-template-columns: repeat(3, 70px);
-       grid-template-rows: repeat(3, 70px);
-       gap: 8px;
-         justify-content: center;
-          margin-bottom: 15px;
+  grid-template-rows: repeat(3, 70px);
+      gap: 8px;
+          justify-content: center;
+  margin-bottom: 15px;
+}
 
-        
-    }
+.cell {
+  width: 70px;
+   height: 70px;
+   font-size: 1.5rem;
+   cursor: pointer;
+   font-weight: bold;
+       background-color: #1e1e2e;
+  color: #ffffff;
+  border: 1px solid #45475a;
+  border-radius: 8px;
+      transition: background 0.2s ease;
+}
 
-     .cell {
-       width: 80px;
-        height: 80px;
-         font-size: 20px;
-         cursor: pointer;
-          font-weight: bold;
-           background-color: #2222;
-            color: #ffff;
-             border: 2px solid #4444;
-              border-radius: 8px;
-              transition: background 0.2;
+.cell:hover {
+    background-color: #313244;
+}
 
+     #reset-btn {
+    background: #89b4fa;
+   color: #11111b;
+   border: none;
+      padding: 8px 16px;
+       border-radius: 6px;
+   font-weight: bold;
+    cursor: pointer;
+}
 
-     }
-
-      .cell:hover {
-         background-color: #313244;
-         
-      }
-       
-    .reset-btn {
-       background: #89b4fa;
-        color: #11111b;
-         border: none;
-          padding: 8px 16px;
-           border-radius:  6px;
-            font-weight: bold;
-             cursor: pointer;
-
-    }
-    
-      .reset-btn:hover {
-         background: #b4befe;
-         
-      }
+#reset-btn:hover {
+  background: #b4befe;
+}
